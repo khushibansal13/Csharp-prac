@@ -382,54 +382,104 @@
 // -----------------------------------------------------------------
 // ## Currency/Temperature Converter
 
+// using System;
+// using System.Data.Common;
+
+// namespace Convertor {
+//     class Program {
+//         static void Main(string[] args) {
+//             System.Console.WriteLine("Welcome to Convertor! Please enter 'c' to use the currency convertor or anything else for temperature convertor");
+//             string ans = Console.ReadLine();
+
+//             if (ans == "c")
+//             {
+//                 System.Console.WriteLine("You have selected a currency convertor");
+//                 System.Console.WriteLine("Please enter 'a' to convert from pounds or anything else to convert from euros");
+//                 string choice = Console.ReadLine();
+
+//                 if (choice == "a") 
+//                 {
+//                     System.Console.WriteLine("Please enter your amount in British pounds");
+//                     float pounds = float.Parse(Console.ReadLine());
+//                     float euros = pounds * 1.16f;
+//                     System.Console.WriteLine("Your amount in euros is" + euros.ToString("0.00"));
+//                 }
+//                 else {
+//                     System.Console.WriteLine("Please enter your amount in euros");
+//                     float euros = float.Parse(Console.ReadLine());
+//                     float pounds = euros / 1.16f;
+//                     System.Console.WriteLine("Your amount in British pounds is" + pounds.ToString("0.00"));
+//                 }
+//             }
+//             else {
+//                 System.Console.WriteLine("You have selected a temperature convertor");
+//                 System.Console.WriteLine("Please enter 'a' to convert from Celsius to Fahrenheit or anything else to convert from Fahrenheit to Celsius");
+//                 string choice = Console.ReadLine();
+
+//                 if (choice == "a") {
+//                     System.Console.WriteLine("Please enter the temperature in Celsius");
+//                     float celsius = float.Parse(Console.ReadLine());
+//                     float fahrenheit = (celsius * 9/5) + 32;
+//                     System.Console.WriteLine("The temperature in Fahrenheit is" + fahrenheit.ToString("0.00"));
+//                 }
+//                 else {
+//                     System.Console.WriteLine("Please enter the temperature in Fahrenheit");
+//                     float fahrenheit = float.Parse(Console.ReadLine());
+//                     float celsius = (fahrenheit - 32) * 5/9;
+//                     System.Console.WriteLine("The temperature in Celsius is" + celsius.ToString("0.00"));
+//                 }
+//             }
+//             System.Console.WriteLine("Thank you for using Convertor!");
+//         }
+//     }
+// }
+// -----------------------------------------------------------------
+// # Quiz Game 
+
 using System;
-using System.Data.Common;
+using System.IO;
 
-namespace Convertor {
-    class Program {
-        static void Main(string[] args) {
-            System.Console.WriteLine("Welcome to Convertor! Please enter 'c' to use the currency convertor or anything else for temperature convertor");
-            string ans = Console.ReadLine();
+string[] text = File.ReadAllLines("questions.txt");
 
-            if (ans == "c")
-            {
-                System.Console.WriteLine("You have selected a currency convertor");
-                System.Console.WriteLine("Please enter 'a' to convert from pounds or anything else to convert from euros");
-                string choice = Console.ReadLine();
+List<string> questions = new List<string>();
+List<string> answers = new List<string>();
 
-                if (choice == "a") 
-                {
-                    System.Console.WriteLine("Please enter your amount in British pounds");
-                    float pounds = float.Parse(Console.ReadLine());
-                    float euros = pounds * 1.16f;
-                    System.Console.WriteLine("Your amount in euros is" + euros.ToString("0.00"));
-                }
-                else {
-                    System.Console.WriteLine("Please enter your amount in euros");
-                    float euros = float.Parse(Console.ReadLine());
-                    float pounds = euros / 1.16f;
-                    System.Console.WriteLine("Your amount in British pounds is" + pounds.ToString("0.00"));
-                }
-            }
-            else {
-                System.Console.WriteLine("You have selected a temperature convertor");
-                System.Console.WriteLine("Please enter 'a' to convert from Celsius to Fahrenheit or anything else to convert from Fahrenheit to Celsius");
-                string choice = Console.ReadLine();
+for (int i = 0; i < text.Length; i++)
+{
+    if(i % 4 == 0) {
+        questions.Add(text[i]);
+    }
+    else {
+        answers.Add(text[i]);
+    }
+}
 
-                if (choice == "a") {
-                    System.Console.WriteLine("Please enter the temperature in Celsius");
-                    float celsius = float.Parse(Console.ReadLine());
-                    float fahrenheit = (celsius * 9/5) + 32;
-                    System.Console.WriteLine("The temperature in Fahrenheit is" + fahrenheit.ToString("0.00"));
-                }
-                else {
-                    System.Console.WriteLine("Please enter the temperature in Fahrenheit");
-                    float fahrenheit = float.Parse(Console.ReadLine());
-                    float celsius = (fahrenheit - 32) * 5/9;
-                    System.Console.WriteLine("The temperature in Celsius is" + celsius.ToString("0.00"));
-                }
-            }
-            System.Console.WriteLine("Thank you for using Convertor!");
+int questionsIndex = 0;
+int answersIndex = 0;
+int score = 0;
+
+while (questionsIndex < questions.Count) {
+    System.Console.WriteLine(questions[questionsIndex]);
+    questionsIndex++;
+
+    int correctAnsIndex = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (answers[answersIndex].StartsWith(">")) {
+            correctAnsIndex = i + 1;
         }
+        System.Console.WriteLine(i + 1 + "." + answers[answersIndex].Replace(">", ""));
+        answersIndex++;
+
+    }
+    int answer = int.Parse(Console.ReadLine());
+
+    if(answer == correctAnsIndex) {
+        score++;
+        System.Console.WriteLine("Correct!");
+    }
+    else {
+        System.Console.WriteLine("Incorrect!");
     }
 }
