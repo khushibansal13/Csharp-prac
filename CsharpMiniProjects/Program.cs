@@ -19,7 +19,7 @@
 //             num2 = Convert.ToInt32(Console.ReadLine());
 
 //             Console.WriteLine("Please select an opperator: a for additin , s for subtraction , m for multiplication, d for division");
-//             string ans = Console.ReadLine();
+//             string ans = Console.ReadLine().ToLower();
 
 //             switch (ans) {
 //                 case "a":
@@ -436,50 +436,120 @@
 // -----------------------------------------------------------------
 // # Quiz Game 
 
+// using System;
+// using System.IO;
+
+// string[] text = File.ReadAllLines("questions.txt");
+
+// List<string> questions = new List<string>();
+// List<string> answers = new List<string>();
+
+// for (int i = 0; i < text.Length; i++)
+// {
+//     if(i % 4 == 0) {
+//         questions.Add(text[i]);
+//     }
+//     else {
+//         answers.Add(text[i]);
+//     }
+// }
+
+// int questionsIndex = 0;
+// int answersIndex = 0;
+// int score = 0;
+
+// while (questionsIndex < questions.Count) {
+//     System.Console.WriteLine(questions[questionsIndex]);
+//     questionsIndex++;
+
+//     int correctAnsIndex = 0;
+
+//     for (int i = 0; i < 3; i++)
+//     {
+//         if (answers[answersIndex].StartsWith(">")) {
+//             correctAnsIndex = i + 1;
+//         }
+//         System.Console.WriteLine(i + 1 + "." + answers[answersIndex].Replace(">", ""));
+//         answersIndex++;
+
+//     }
+//     int answer = int.Parse(Console.ReadLine());
+
+//     if(answer == correctAnsIndex) {
+//         score++;
+//         System.Console.WriteLine("Correct!");
+//     }
+//     else {
+//         System.Console.WriteLine("Incorrect!");
+//     }
+// }
+// -----------------------------------------------------------------------------
+// #Turn Based Game
+
 using System;
-using System.IO;
 
-string[] text = File.ReadAllLines("questions.txt");
-
-List<string> questions = new List<string>();
-List<string> answers = new List<string>();
-
-for (int i = 0; i < text.Length; i++)
+namespace TurnBasedGame
 {
-    if(i % 4 == 0) {
-        questions.Add(text[i]);
-    }
-    else {
-        answers.Add(text[i]);
-    }
-}
+    class Unit {
+        private int currentHp;
+        private int maxHp;
+        private int attackPower;
+        private int healPower;
+        private string unitname;
+        private Random random;
 
-int questionsIndex = 0;
-int answersIndex = 0;
-int score = 0;
-
-while (questionsIndex < questions.Count) {
-    System.Console.WriteLine(questions[questionsIndex]);
-    questionsIndex++;
-
-    int correctAnsIndex = 0;
-
-    for (int i = 0; i < 3; i++)
-    {
-        if (answers[answersIndex].StartsWith(">")) {
-            correctAnsIndex = i + 1;
+        public Unit(int maxHp, int attackPower, int healPower , string unitname)
+        {
+            this.maxHp = maxHp;
+            this.currentHp = maxHp;
+            this.attackPower = attackPower;
+            this.healPower = healPower;
+            this.unitname = unitname;
+            this.random = new Random();
         }
-        System.Console.WriteLine(i + 1 + "." + answers[answersIndex].Replace(">", ""));
-        answersIndex++;
 
-    }
-    int answer = int.Parse(Console.ReadLine());
+        public int GetCurrentHp()
+        {
+            return currentHp;
+        }
 
-    if(answer == correctAnsIndex) {
-        score++;
-        System.Console.WriteLine("Correct!");
+        public void Attack(Unit unitToAttack) {
+            double rng = random.NextDouble();
+            rng = rng / 2 + 0.75f;
+            int randDamage = (int)(attackPower * rng);
+            unitToAttack.TakeDamage(randDamage);
+            System.Console.WriteLine(unitname + " attacks " + unitToAttack.unitname + " and deals " + randDamage + " damage");
+        }
+
+        public void TakeDamage(int damage) {
+            currentHp -= damage;
+        }
     }
-    else {
-        System.Console.WriteLine("Incorrect!");
+
+    class Program{
+        static void Main(string[] args) {
+            Unit player = new Unit(100, 20, 10, "Player");
+            Unit enemy = new Unit(150, 15, 5, "Enemy");
+
+            while (player.GetCurrentHp() > 0 && enemy.GetCurrentHp() > 0)
+            {
+                player.Attack(enemy);
+                if (enemy.GetCurrentHp() > 0)
+                {
+                    enemy.Attack(player);
+                }
+                Console.WriteLine($"Player HP: {player.GetCurrentHp()}");
+                Console.WriteLine($"Enemy HP: {enemy.GetCurrentHp()}");
+            }
+
+            if (player.GetCurrentHp() <= 0)
+            {
+                Console.WriteLine("Player has been defeated!");
+            }
+            else
+            {
+                Console.WriteLine("Enemy has been defeated!");
+            }
+        }
     }
 }
