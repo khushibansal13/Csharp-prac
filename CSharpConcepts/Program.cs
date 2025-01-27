@@ -1,10 +1,10 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Security.Principal;
-using System.Threading.Tasks.Dataflow;
+﻿// using System;
+// using System.Runtime.InteropServices;
+// using System.Security.Principal;
+// using System.Threading.Tasks.Dataflow;
 
-class Program {
-    static void Main(string[] args) {
+// class Program {
+//     static void Main(string[] args) {
         // string phrase = "Hello world started";
         // Console.WriteLine(phrase.ToLower());
         // Console.WriteLine(phrase.Contains("World"));
@@ -134,12 +134,12 @@ class Program {
         // Console.WriteLine(numberGrid[0, 1]);
 
 
-        Random dice = new Random();
-        int roll = dice.Next(1, 1000);
-        Console.WriteLine(roll);
+    //     Random dice = new Random();
+    //     int roll = dice.Next(1, 1000);
+    //     Console.WriteLine(roll);
 
 
-    }
+    // }
 
     // static int GetPow(int baseNum, int powNum) {
     //     int res = 1;
@@ -182,9 +182,111 @@ class Program {
 
 //             return dayName;
 //         }
+// }
+
+// ----------------------------------------------------------------------------------
+// Module 3: Unit 3.3
+
+// // SKU = Stock Keeping Unit. 
+// // SKU value format: <product #>-<2-letter color code>-<size code>
+// string sku = "01-MN-L";
+
+// string[] product = sku.Split('-');
+
+// string type = "";
+// string color = "";
+// string size = "";
+
+// switch (product[0]) {
+//     case "01":
+//         type = "Sweat Shirt";
+//         break;
+//     case "02":
+//         type = "T-shirts";
+//         break;
+//     case "03":
+//         type = "Sweat Pants";
+//         break;
+//     default:
+//         type = "Other";
+//         break;
+// }
+
+// switch (product[1]) {
+//     case "BL":
+//         color = "Black";
+//         break;
+//     case "MN":
+//         color = "Maroon";
+//         break;
+//     default:
+//         color = "Other";
+//         break;   
+// }
+
+// switch (product[2]) {
+//     case "S":
+//         size = "Small";
+//         break;
+//     case "M":
+//         size = "Medium";
+//         break;
+//     case "L":
+//         size = "Large";
+//         break;
+//     case "XL":
+//         size = "Extra Large";
+//         break;
+//     default:
+//         size = "One Size Fits All";
+//         break;
+// }
+
+// Console.WriteLine($"Product: {size} {color} {type}");
+// --------------------------------------------------------------------------
+// #FizzBuzz challenge
+
+// using System;
+
+// class Program {
+//     static void Main(string[] args) {
+//     //     for (int i = 1; i < 101; i++)
+//     // {
+//     //     if ((i % 3 == 0) && (i % 5 == 0))
+//     //         Console.WriteLine($"{i} - FizzBuzz");
+//     //     else if (i % 3 == 0)
+//     //         Console.WriteLine($"{i} - Fizz");
+//     //     else if (i % 5 == 0)
+//     //         Console.WriteLine($"{i} - Buzz");
+//     //     else
+//     //         Console.WriteLine($"{i}");
+//     // }
+
+// }
+// }
+// ----------------------------------------------------------------------------------
+// #Game rules
+
+int hero = 0;
+int monster = 0;
+
+Random dice = new Random();
+
+do{
+    int roll = dice.Next(1, 7);
+    monster -= roll;
+    Console.WriteLine($"Monster rolled {roll}. Monster's position is {monster}.");
+
+    if (monster <= 0) continue;
+
+    int roll = dice.Next(1, 7);
+    hero -= roll;
+    System.Console.WriteLine($"Hero rolled {roll}. Hero's position is {hero}.");
+
+} while (hero > 0 && monster > 0);
+{
+    System.Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
 }
-
-
 
 
 

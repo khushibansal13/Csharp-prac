@@ -31,3 +31,6 @@ decimal        28-29 digits
 ![access modifier](image-1.png)  
 ![access modifier](image-2.png)
 ![C# keywords](image-3.png)
+- in forEach method you cannot change the value like update the value 
+- params is used when we dont know the number of parameters that will be passed.
+- In declarative programming, the focus is on expressing the logic of computation without getting into the step-by-step implementation details (i.e., how the task is carried out). In contrast, imperative programming focuses on how a program operates by providing step-by-step instructions for the computer to follow.
