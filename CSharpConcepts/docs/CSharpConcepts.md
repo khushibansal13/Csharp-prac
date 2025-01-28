@@ -34,3 +34,12 @@ decimal        28-29 digits
 - in forEach method you cannot change the value like update the value 
 - params is used when we dont know the number of parameters that will be passed.
 - In declarative programming, the focus is on expressing the logic of computation without getting into the step-by-step implementation details (i.e., how the task is carried out). In contrast, imperative programming focuses on how a program operates by providing step-by-step instructions for the computer to follow.
+- TryParse is a method in C# used to convert a string into a number (or other data types) safely without throwing an error. It’s especially useful when you’re unsure if the input can actually be converted to a number.
+    ```csharp
+    bool int.TryParse(string input, out int result);
+    ```
+- IndexOf(): Finds the position of a specific character in a string (. in this case).
+- Remove(): Removes part of a string, returning the portion up to a specified index.
+- Substring(): Extracts a portion of a string starting from a given index.
+- TrimStart(): Removes leading spaces from a string.
+- Trim(): Removes both leading and trailing spaces from a string.
