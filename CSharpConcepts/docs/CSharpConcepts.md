@@ -43,3 +43,48 @@ decimal        28-29 digits
 - Substring(): Extracts a portion of a string starting from a given index.
 - TrimStart(): Removes leading spaces from a string.
 - Trim(): Removes both leading and trailing spaces from a string.
+
+### Data and Data types:
+
+- Value types are stored in stack for faster and limited memory space.
+    - contains the actual value, each variable has its own independent copy of the data.
+Examples:
+Primitive types: int, double, float, bool, char
+Structs: struct
+Enumerations: enum
+- Reference types are stored in heap for larger memory space.
+    - contains the address of the value, multiple variables can point to the same memory location.
+Examples:
+Classes: class
+Interfaces: interface
+Delegates: delegate
+Arrays: array
+
+#### Signed and Unsigned Data Types:
+Signed types can store both positive and negative values.
+Unsigned types can store only positive values.
+- Signed types: sbyte, short, int, long, float, double, decimal 
+- Unsigned types: byte, ushort, uint, ulong
+
+![Convert Vs Parse](image-4.png)
+- Use typecasting ((int)) when you want simple truncation.
+- Use Convert.ToInt32() for rounding when converting to integers.
+
+#### Array helper methods:
+```csharp
+Array.Clear(array, index, length);
+```
+
+### Composite formatting VS string interpolation:
+![CF VS SI](image-5.png)
+
+```csharp
+string result = string.Format("Name: {0}, Age: {1}, Salary: {2:C}", name, age, salary); // Composite formatting
+
+string result = $"Name: {name}, Age: {age}, Salary: {salary:C}"; // String interpolation
+```
+
+- currency formatting can be done by {variable:C} and also there are various other formats like {variable:D} for decimal, {variable:F} for fixed point, {variable:E} for scientific notation, {variable:X} for hexadecimal, {variable:P} for percentage, {variable:N} for number with commas, {variable:G} for general format.
+
+- The PadLeft() method adds blank spaces to the left-hand side of the string so that the total number of characters equals the argument you send it.
+
