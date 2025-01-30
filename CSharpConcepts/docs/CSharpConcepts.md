@@ -88,3 +88,40 @@ string result = $"Name: {name}, Age: {age}, Salary: {salary:C}"; // String inter
 
 - The PadLeft() method adds blank spaces to the left-hand side of the string so that the total number of characters equals the argument you send it.
 
+- A delegate in C# is a type-safe function pointer that holds a reference to a method. Delegates allow methods to be passed as arguments, stored in variables, or dynamically assigned at runtime.
+    - Its a callback function and higher order functions
+    - Delegates are not functions themselves; they are just pointers to functions. The actual logic resides in the methods assigned to the delegate.
+    - Delegates can be used to take functions as arguments or return functions from other methods. This is what makes them higher-order functions in C#.
+- C# provides built-in delegates for common scenarios to avoid the need to define custom delegate types. These built-in delegates are part of the System namespace and include:
+1. Action<T>
+- Represents a method that takes one or more arguments but does not return a value.
+You can have Action, Action<T1>, Action<T1, T2>, etc., up to 16 parameters.
+2. Func<T, TResult>
+- Represents a method that takes one or more arguments and returns a value.
+The last type parameter is always the return type.
+3. Predicate<T>
+- Represents a method that takes one argument and returns a bool.
+Used for conditions or checks.
+
+## events in C#
+
+An event in C# is a way to enable communication between classes through the publisher-subscriber model. It allows a class (the publisher) to notify other classes (the subscribers) when something happens.
+
+- Delegate: Defines the signature for the methods that handle the event.
+- Publisher: Fires the event, notifying subscribers.
+- Subscriber: Listens to the event and reacts when it is triggered.
+- Syntax: Use the event keyword to declare an event and += to subscribe to it.
+- Purpose: Provides loose coupling between the publisher and subscribers, allowing multiple - subscribers to respond to an event.
+- Example: A Button click event where multiple subscribers (like different UI elements) can react to the click without the button knowing who those subscribers are.
+
+Key Benefits:
+- Encapsulation: Only the publisher can trigger the event, ensuring proper handling.
+- Asynchronous: Events can handle notifications asynchronously.
+Usage: Typically used in UI frameworks (like WinForms, WPF) or in any situation where objects need to notify others of changes or actions.
+
+
+
+
+
+
+

@@ -861,204 +861,307 @@
 // ----------------------------------------------------------------------------------------------
 // ###Module 4 : Final project
 
-string animalSpecies = "";
-string animalID = "";
-string animalAge = "";
-string animalPhysicalDescription = "";
-string animalPersonalityDescription = "";
-string animalNickname = "";
-string suggestedDonation = "";
+// string animalSpecies = "";
+// string animalID = "";
+// string animalAge = "";
+// string animalPhysicalDescription = "";
+// string animalPersonalityDescription = "";
+// string animalNickname = "";
+// string suggestedDonation = "";
 
-int maxPets = 8;
-string? readResult;
-string menuSelection = "";
-decimal decimalDonation = 0.00m;
+// int maxPets = 8;
+// string? readResult;
+// string menuSelection = "";
+// decimal decimalDonation = 0.00m;
 
-string[,] ourAnimals = new string[maxPets, 7];
+// string[,] ourAnimals = new string[maxPets, 7];
 
-for (int i = 0; i < maxPets; i++)
-{
-    switch (i)
-    {
-        case 0:
-            animalSpecies = "dog";
-            animalID = "d1";
-            animalAge = "2";
-            animalPhysicalDescription = "medium sized cream colored female golden retriever weighing about 45 pounds. housebroken.";
-            animalPersonalityDescription = "loves to have her belly rubbed and likes to chase her tail. gives lots of kisses.";
-            animalNickname = "lola";
-            suggestedDonation = "85.00";
-            break;
+// for (int i = 0; i < maxPets; i++)
+// {
+//     switch (i)
+//     {
+//         case 0:
+//             animalSpecies = "dog";
+//             animalID = "d1";
+//             animalAge = "2";
+//             animalPhysicalDescription = "medium sized cream colored female golden retriever weighing about 45 pounds. housebroken.";
+//             animalPersonalityDescription = "loves to have her belly rubbed and likes to chase her tail. gives lots of kisses.";
+//             animalNickname = "lola";
+//             suggestedDonation = "85.00";
+//             break;
 
-        case 1:
-            animalSpecies = "dog";
-            animalID = "d2";
-            animalAge = "9";
-            animalPhysicalDescription = "large reddish-brown male golden retriever weighing about 85 pounds. housebroken.";
-            animalPersonalityDescription = "loves to have his ears rubbed when he greets you at the door, or at any time! loves to lean-in and give doggy hugs.";
-            animalNickname = "gus";
-            suggestedDonation = "49.99";
-            break;
+//         case 1:
+//             animalSpecies = "dog";
+//             animalID = "d2";
+//             animalAge = "9";
+//             animalPhysicalDescription = "large reddish-brown male golden retriever weighing about 85 pounds. housebroken.";
+//             animalPersonalityDescription = "loves to have his ears rubbed when he greets you at the door, or at any time! loves to lean-in and give doggy hugs.";
+//             animalNickname = "gus";
+//             suggestedDonation = "49.99";
+//             break;
 
-        case 2:
-            animalSpecies = "cat";
-            animalID = "c3";
-            animalAge = "1";
-            animalPhysicalDescription = "small white female weighing about 8 pounds. litter box trained.";
-            animalPersonalityDescription = "friendly";
-            animalNickname = "snow";
-            suggestedDonation = "40.00";
-            break;
+//         case 2:
+//             animalSpecies = "cat";
+//             animalID = "c3";
+//             animalAge = "1";
+//             animalPhysicalDescription = "small white female weighing about 8 pounds. litter box trained.";
+//             animalPersonalityDescription = "friendly";
+//             animalNickname = "snow";
+//             suggestedDonation = "40.00";
+//             break;
 
-        case 3:
-            animalSpecies = "cat";
-            animalID = "c4";
-            animalAge = "";
-            animalPhysicalDescription = "";
-            animalPersonalityDescription = "";
-            animalNickname = "lion";
-            suggestedDonation = "";
+//         case 3:
+//             animalSpecies = "cat";
+//             animalID = "c4";
+//             animalAge = "";
+//             animalPhysicalDescription = "";
+//             animalPersonalityDescription = "";
+//             animalNickname = "lion";
+//             suggestedDonation = "";
 
-            break;
+//             break;
 
-        default:
-            animalSpecies = "";
-            animalID = "";
-            animalAge = "";
-            animalPhysicalDescription = "";
-            animalPersonalityDescription = "";
-            animalNickname = "";
-            suggestedDonation = "";
-            break;
-    }
+//         default:
+//             animalSpecies = "";
+//             animalID = "";
+//             animalAge = "";
+//             animalPhysicalDescription = "";
+//             animalPersonalityDescription = "";
+//             animalNickname = "";
+//             suggestedDonation = "";
+//             break;
+//     }
 
-    ourAnimals[i, 0] = "ID #: " + animalID;
-    ourAnimals[i, 1] = "Species: " + animalSpecies;
-    ourAnimals[i, 2] = "Age: " + animalAge;
-    ourAnimals[i, 3] = "Nickname: " + animalNickname;
-    ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
-    ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
-    
-    if (!decimal.TryParse(suggestedDonation, out decimalDonation))
-    {
-        decimalDonation = 45.00m; 
-    }
-    ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
-}
-do
-{
-    Console.Clear();
+//     ourAnimals[i, 0] = "ID #: " + animalID;
+//     ourAnimals[i, 1] = "Species: " + animalSpecies;
+//     ourAnimals[i, 2] = "Age: " + animalAge;
+//     ourAnimals[i, 3] = "Nickname: " + animalNickname;
+//     ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
+//     ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
+       
+//     if (!decimal.TryParse(suggestedDonation, out decimalDonation))
+//     {
+//         decimalDonation = 45.00m; 
+//     }
+//     ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
+// }
+// do
+// {
+//     Console.Clear();
 
-    Console.WriteLine("Welcome to the Contoso PetFriends app. Your main menu options are:");
-    Console.WriteLine(" 1. List all of our current pet information");
-    Console.WriteLine(" 2. Display all dogs with a specified characteristic");
-    Console.WriteLine();
-    Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
+//     Console.WriteLine("Welcome to the Contoso PetFriends app. Your main menu options are:");
+//     Console.WriteLine(" 1. List all of our current pet information");
+//     Console.WriteLine(" 2. Display all dogs with a specified characteristic");
+//     Console.WriteLine();
+//     Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
 
-    readResult = Console.ReadLine();
+//     readResult = Console.ReadLine();
 
-    if (readResult != null)
-    {
-        menuSelection = readResult.ToLower();
-    }
-    switch (menuSelection)
-    {
-        case "1":
-            for (int i = 0; i < maxPets; i++)
-            {
-                if (ourAnimals[i, 0] != "ID #: ")
-                {
-                    Console.WriteLine();
+//     if (readResult != null)
+//     {
+//         menuSelection = readResult.ToLower();
+//     }
+//     switch (menuSelection)
+//     {
+//         case "1":
+//             for (int i = 0; i < maxPets; i++)
+//             {
+//                 if (ourAnimals[i, 0] != "ID #: ")
+//                 {
+//                     Console.WriteLine();
 
-                    for (int j = 0; j < 7; j++)
-                    {
-                        Console.WriteLine(ourAnimals[i, j].ToString());
-                    }
-                }
-            }
+//                     for (int j = 0; j < 7; j++)
+//                     {
+//                         Console.WriteLine(ourAnimals[i, j].ToString());
+//                     }
+//                 }
+//             }
 
-            Console.WriteLine("\r\nPress the Enter key to continue");
-            readResult = Console.ReadLine();
+//             Console.WriteLine("\r\nPress the Enter key to continue");
+//             readResult = Console.ReadLine();
 
-            break;
+//             break;
 
-        case "2":
-            string dogCharacteristics = "";
+//         case "2":
+//             string dogCharacteristics = "";
 
-            while (dogCharacteristics == "")
-            {
-                Console.WriteLine($"\nEnter dog characteristics to search for separated by commas");
-                readResult = Console.ReadLine();
+//             while (dogCharacteristics == "")
+//             {
+//                 Console.WriteLine($"\nEnter dog characteristics to search for separated by commas");
+//                 readResult = Console.ReadLine();
 
-                if (readResult != null)
-                {
-                    dogCharacteristics = readResult.ToLower();
-                    Console.WriteLine();
-                }
-            }
+//                 if (readResult != null)
+//                 {
+//                     dogCharacteristics = readResult.ToLower();
+//                     Console.WriteLine();
+//                 }
+//             }
 
-            string[] dogSearches = dogCharacteristics.Split(",");
-            for (int i = 0; i < dogSearches.Length; i++)
-            {
-                dogSearches[i] = dogSearches[i].Trim();
-            }
+//             string[] dogSearches = dogCharacteristics.Split(",");
+//             for (int i = 0; i < dogSearches.Length; i++)
+//             {
+//                 dogSearches[i] = dogSearches[i].Trim();
+//             }
 
-            Array.Sort(dogSearches);
-            string[] searchingIcons = {" |", " /", "--", " \\", " *"};
+//             Array.Sort(dogSearches);
+//             string[] searchingIcons = {" |", " /", "--", " \\", " *"};
 
-            bool matchesAnyDog = false;
-            string dogDescription = "";
-            for (int i = 0; i < maxPets; i++)
-            {
-                if (ourAnimals[i, 1].Contains("dog"))
-                {
-                    dogDescription = ourAnimals[i, 4] + "\n" + ourAnimals[i, 5];
-                    bool matchesCurrentDog = false;
+//             bool matchesAnyDog = false;
+//             string dogDescription = "";
+//             for (int i = 0; i < maxPets; i++)
+//             {
+//                 if (ourAnimals[i, 1].Contains("dog"))
+//                 {
+//                     dogDescription = ourAnimals[i, 4] + "\n" + ourAnimals[i, 5];
+//                     bool matchesCurrentDog = false;
 
-                    foreach (string term in dogSearches)
-                    {
-                        if (term != null && term.Trim() != "")
-                        {
-                            for (int j = 2; j > -1 ; j--)
-                            {
-                                foreach (string icon in searchingIcons)
-                                {
-                                    Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {term.Trim()} {icon} {j.ToString()}");
-                                    Thread.Sleep(100);
-                                }
+//                     foreach (string term in dogSearches)
+//                     {
+//                         if (term != null && term.Trim() != "")
+//                         {
+//                             for (int j = 2; j > -1 ; j--)
+//                             {
+//                                 foreach (string icon in searchingIcons)
+//                                 {
+//                                     Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {term.Trim()} {icon} {j.ToString()}");
+//                                     Thread.Sleep(100);
+//                                 }
                                 
-                                Console.Write($"\r{new String(' ', Console.BufferWidth)}");
-                            }
-                            if (dogDescription.Contains(" " + term.Trim() + " "))
-                            {
-                                Console.WriteLine($"\rOur dog {ourAnimals[i, 3]} matches your search for {term.Trim()}");
+//                                 Console.Write($"\r{new String(' ', Console.BufferWidth)}");
+//                             }
+//                             if (dogDescription.Contains(" " + term.Trim() + " "))
+//                             {
+//                                 Console.WriteLine($"\rOur dog {ourAnimals[i, 3]} matches your search for {term.Trim()}");
 
-                                matchesCurrentDog = true;
-                                matchesAnyDog = true;
-                            }
-                        }
-                    }
+//                                 matchesCurrentDog = true;
+//                                 matchesAnyDog = true;
+//                             }
+//                         }
+//                     }
                     
-                    if (matchesCurrentDog)
-                    {
-                        Console.WriteLine($"\r{ourAnimals[i, 3]} ({ourAnimals[i, 0]})\n{dogDescription}\n");
-                    }
-                }
-            }
+//                     if (matchesCurrentDog)
+//                     {
+//                         Console.WriteLine($"\r{ourAnimals[i, 3]} ({ourAnimals[i, 0]})\n{dogDescription}\n");
+//                     }
+//                 }
+//             }
 
-            if (!matchesAnyDog)
-            {
-                Console.WriteLine("None of our dogs are a match found for: " + dogCharacteristics);
-            }
+//             if (!matchesAnyDog)
+//             {
+//                 Console.WriteLine("None of our dogs are a match found for: " + dogCharacteristics);
+//             }
 
-            Console.WriteLine("\n\rPress the Enter key to continue");
-            readResult = Console.ReadLine();
+//             Console.WriteLine("\n\rPress the Enter key to continue");
+//             readResult = Console.ReadLine();
 
-            break;
+//             break;
 
-        default:
-            break;
+//         default:
+//             break;
+//     }
+// } 
+// while (menuSelection != "exit");
+// ----------------------------------------------------------------------------------------------
+
+// class Program {
+//     static void Main(string[] args) {
+//         void DisplapRandomNum() {
+//             Random random = new Random();
+
+//             for (int i = 0; i < 5; i++)
+//             {
+//                 System.Console.WriteLine($"{random.Next(1, 100)}");
+//             }
+//             System.Console.WriteLine();
+//         }
+
+//         System.Console.WriteLine("Generating random numbers:");
+//         DisplapRandomNum();
+//     }
+// }
+// -------------------------------------------------------------------------------------------------
+// ## Delegates as Callbacks
+
+// using System;
+
+// public class Program {
+//     public delegate void PrintDelegate(string message);
+
+//     static void Main(string[] args) {
+//         ExecuteCallback(PrintMessage);
+        
+//         static void PrintMessage(string message) {
+//             Console.WriteLine(message);
+//         }
+
+//         static void ExecuteCallback(PrintDelegate callback) {
+//             System.Console.WriteLine("Calling");
+//         }
+//     }
+// }
+
+// ## Delegates as Higher order 
+// using System;
+
+// class Program
+// {
+//     public delegate int MathOperation(int x, int y);
+
+//     static void Main()
+//     {
+//         // Pass different operations as delegates
+//         MathOperation add = (x, y) => x + y;
+//         MathOperation multiply = (x, y) => x * y;
+
+//         Console.WriteLine(Operate(5, 3, add));       // Output: 8
+//         Console.WriteLine(Operate(5, 3, multiply));  // Output: 15
+//     }
+
+//     static int Operate(int a, int b, MathOperation operation)
+//     {
+//         return operation(a, b);
+//     }
+// }
+// --------------------------------------------------------------------------------------------------------
+// ## using interface as reference
+using System;
+
+interface ICallback
+{
+    void OnCompleted(string result);
+}
+
+class Worker
+{
+    private ICallback callback; // ✅ Interface reference (not an instance)
+
+    public Worker(ICallback callback) // Assigning via constructor
+    {
+        this.callback = callback;
     }
-} 
-while (menuSelection != "exit");
 
+    public void DoWork()
+    {
+        Console.WriteLine("Working...");
+        callback.OnCompleted("Work done!");
+    }
+}
+
+class Client : ICallback
+{
+    public void OnCompleted(string result)
+    {
+        Console.WriteLine("Client received: " + result);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Client client = new Client();
+        Worker worker = new Worker(client); // Passing an instance of Client
+        worker.DoWork();
+    }
+}
+ 
