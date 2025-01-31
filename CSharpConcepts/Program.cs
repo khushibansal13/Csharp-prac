@@ -770,7 +770,7 @@
 //             Console.WriteLine("Press the Enter key to continue.");
 //             readResult = Console.ReadLine();
 //             break;
-        
+
 //         case "7":
 //             // Display all cats with a specified characteristic
 //             Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
@@ -938,7 +938,7 @@
 //     ourAnimals[i, 3] = "Nickname: " + animalNickname;
 //     ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
 //     ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
-       
+
 //     if (!decimal.TryParse(suggestedDonation, out decimalDonation))
 //     {
 //         decimalDonation = 45.00m; 
@@ -1026,7 +1026,7 @@
 //                                     Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {term.Trim()} {icon} {j.ToString()}");
 //                                     Thread.Sleep(100);
 //                                 }
-                                
+
 //                                 Console.Write($"\r{new String(' ', Console.BufferWidth)}");
 //                             }
 //                             if (dogDescription.Contains(" " + term.Trim() + " "))
@@ -1038,7 +1038,7 @@
 //                             }
 //                         }
 //                     }
-                    
+
 //                     if (matchesCurrentDog)
 //                     {
 //                         Console.WriteLine($"\r{ourAnimals[i, 3]} ({ourAnimals[i, 0]})\n{dogDescription}\n");
@@ -1089,7 +1089,7 @@
 
 //     static void Main(string[] args) {
 //         ExecuteCallback(PrintMessage);
-        
+
 //         static void PrintMessage(string message) {
 //             Console.WriteLine(message);
 //         }
@@ -1124,44 +1124,388 @@
 // }
 // --------------------------------------------------------------------------------------------------------
 // ## using interface as reference
-using System;
+// using System;
 
-interface ICallback
-{
-    void OnCompleted(string result);
-}
+// interface ICallback
+// {
+//     void OnCompleted(string result);
+// }
 
-class Worker
-{
-    private ICallback callback; // ✅ Interface reference (not an instance)
+// class Worker
+// {
+//     private ICallback callback; // ✅ Interface reference (not an instance)
 
-    public Worker(ICallback callback) // Assigning via constructor
-    {
-        this.callback = callback;
-    }
+//     public Worker(ICallback callback) // Assigning via constructor
+//     {
+//         this.callback = callback;
+//     }
 
-    public void DoWork()
-    {
-        Console.WriteLine("Working...");
-        callback.OnCompleted("Work done!");
-    }
-}
+//     public void DoWork()
+//     {
+//         Console.WriteLine("Working...");
+//         callback.OnCompleted("Work done!");
+//     }
+// }
 
-class Client : ICallback
-{
-    public void OnCompleted(string result)
-    {
-        Console.WriteLine("Client received: " + result);
-    }
-}
+// class Client : ICallback
+// {
+//     public void OnCompleted(string result)
+//     {
+//         Console.WriteLine("Client received: " + result);
+//     }
+// }
 
-class Program
-{
-    static void Main()
-    {
-        Client client = new Client();
-        Worker worker = new Worker(client); // Passing an instance of Client
-        worker.DoWork();
-    }
-}
- 
+// class Program
+// {
+//     static void Main()
+//     {
+//         Client client = new Client();
+//         Worker worker = new Worker(client); // Passing an instance of Client
+//         worker.DoWork();
+//     }
+// }
+//  -------------------------------------------------------------------------------------------
+// ## Module 5:
+
+// int[] times = {800, 1200, 1600, 2000};
+// int diff = 0;
+
+// Console.WriteLine("Enter current GMT");
+// int currentGMT = Convert.ToInt32(Console.ReadLine());
+
+// Console.WriteLine("Current Medicine Schedule:");
+// DisplayTimes();
+
+// Console.WriteLine("Enter new GMT");
+// int newGMT = Convert.ToInt32(Console.ReadLine());
+
+// if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+// {
+//     Console.WriteLine("Invalid GMT");
+// }
+// else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0) 
+// {
+//     diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+//     AdjustTimes();
+// } 
+// else 
+// {
+//     diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+//     AdjustTimes();
+// }
+
+// Console.WriteLine("New Medicine Schedule:");
+// DisplayTimes();
+
+// void DisplayTimes()
+// {
+//     /* Format and display medicine times */
+//     foreach (int val in times)
+//     {
+//         string time = val.ToString();
+//         int len = time.Length;
+
+//         if (len >= 3)
+//         {
+//             time = time.Insert(len - 2, ":");
+//         }
+//         else if (len == 2)
+//         {
+//             time = time.Insert(0, "0:");
+//         }
+//         else
+//         {
+//             time = time.Insert(0, "0:0");
+//         }
+
+//         Console.Write($"{time} ");
+//     }
+//     Console.WriteLine();
+// }
+
+// void AdjustTimes() 
+// {
+//     /* Adjust the times by adding the difference, keeping the value within 24 hours */
+//     for (int i = 0; i < times.Length; i++) 
+//     {
+//         times[i] = ((times[i] + diff)) % 2400;
+//     }
+// }
+// ---------------------------------------------------------------------------------------------
+// using System;
+
+// class Program
+// {
+//     string[] ipv4Input = { "107.31.1.5", "255.0.0.255", "555..0.555", "255...255" };
+//     string[] address;
+//     bool isLengthValid = false;
+//     bool isZeroesValid = false;
+//     bool isRangeValid = false;
+
+//     static void Main()
+//     {
+//         Program program = new Program();
+
+//         foreach (string ip in program.ipv4Input)
+//         {
+//             program.address = ip.Split(".", StringSplitOptions.RemoveEmptyEntries);
+
+//             program.CheckLength();
+//             program.CheckZeroes();
+//             program.CheckRange();
+
+//             if (program.isLengthValid && program.isZeroesValid && program.isRangeValid)
+//             {
+//                 Console.WriteLine($"{ip} is a valid IPv4 address");
+//             }
+//             else
+//             {
+//                 Console.WriteLine($"{ip} is not a valid IPv4 address");
+//             }
+//         }
+//     }
+
+//     void CheckLength()
+//     {
+//         isLengthValid = address.Length == 4;
+//     }
+
+//     void CheckZeroes()
+//     {
+//         foreach (string number in address)
+//         {
+//             if (number.Length > 1 && number.StartsWith("0"))
+//             {
+//                 isZeroesValid = false;
+//                 return;
+//             }
+//         }
+//         isZeroesValid = true;
+//     }
+
+//     void CheckRange()
+//     {
+//         foreach (string number in address)
+//         {
+//             int value;
+//             if (!int.TryParse(number, out value) || value < 0 || value > 255)
+//             {
+//                 isRangeValid = false;
+//                 return;
+//             }
+//         }
+//         isRangeValid = true;
+//     }
+// }
+// ------------------------------------------------------------------------------------------------
+// ## Random Fortune Teller
+
+// Random random = new Random();
+// int luck = random.Next(100);
+
+// string[] text = {"You have much to", "Today is a day to", "Whatever work you do", "This is an ideal time to"};
+// string[] good = {"look forward to.", "try new things!", "is likely to succeed.", "accomplish your dreams!"};
+// string[] bad = {"fear.", "avoid major decisions.", "may have unexpected outcomes.", "re-evaluate your life."};
+// string[] neutral = {"appreciate.", "enjoy time with friends.", "should align with your values.", "get in tune with nature."};
+
+// TellFortune();
+
+// void TellFortune() {
+//     System.Console.WriteLine("A fortune teller whisprer the follow words: ");
+//     string[] fortune = (luck > 75 ? good : (luck < 25 ? bad : neutral));
+//     for (int i = 0; i < 4; i++)
+//     {
+//         System.Console.WriteLine($"{text[i]} {fortune[i]}");
+//     }
+// }
+// ----------------------------------------------------------------------------------------------------
+
+// string[,] corporate = 
+// 	{
+// 		{"Robert", "Bavin"}, {"Simon", "Bright"},
+// 		{"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+// 		{"Sarah", "Delucchi"}, {"Sinan", "Ali"}};
+
+// 	string[,] external = 
+// 	{
+// 		{"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+// 		{"Shay", "Lawrence"}, {"Daren", "Valdes"}
+// 	};
+
+// 	string externalDomain = "hayworth.com";
+
+// 	for (int i = 0; i < corporate.GetLength(0); i++) 
+// 	{
+// 		DisplayEmail(first: corporate[i,0], last: corporate[i,1]);
+// 	}
+
+// 	for (int i = 0; i < external.GetLength(0); i++) 
+// 	{
+// 		DisplayEmail(first: external[i,0], last: external[i,1], domain: externalDomain);
+// 	}
+
+// 	void DisplayEmail(string first, string last, string domain = "contoso.com") 
+// 	{
+// 		string email = first.Substring(0, 2) + last;
+// 		email = email.ToLower();
+// 		Console.WriteLine($"{email}@{domain}");
+// 	}
+// -----------------------------------------------------------------------------------------------
+// string[] guestList = {"Rebecca", "Nadia", "Noor", "Jonte"};
+// string[] rsvps = new string[10];
+// int count = 0;
+
+// RSVP("Rebecca", 1, "none", true);
+// RSVP("Nadia", 2, "Nuts", true);
+// RSVP("Linh", 2, "none", false); 
+// RSVP("Tony", 1, "Jackfruit", true);
+// RSVP("Noor", 4, "none", false);
+// RSVP("Jonte", 2, "Stone fruit", false);
+// ShowRSVPs();
+
+// void RSVP(string name, int partySize, string allergies, bool inviteonly) {
+//     if (inviteonly)
+//     {
+//         bool found = false;
+//         foreach (string guest in guestList)
+//         {
+//             if (guest.Equals(name)) {
+//                 found = true;
+//                 break;
+//             }
+//         }
+//         if (!found) {
+//             System.Console.WriteLine($"Sorry, {name} you cannot RSVP without being invited.");
+//             return;
+//         }
+//     }
+//     rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
+//     count++;
+// }
+
+// void ShowRSVPs() {
+//     System.Console.WriteLine("\nTotal RSVPs: ");
+//     for (int i = 0; i < count; i++)
+//     {
+//         System.Console.WriteLine(rsvps[i]);
+//     }
+// }
+// --------------------------------------------------------------------------------------------------
+// using System;
+
+// double total = 0;
+// double minimumSpend = 30.00;
+
+// double[] items = {15.97, 3.50, 12.25, 22.99, 10.98};
+// double[] discounts = {0.30, 0.00, 0.10, 0.20, 0.50};
+
+// for (int i = 0; i < items.Length; i++)
+// {
+//     total += GetDiscountedPrice(i);
+// }
+
+// total -= TotalMeetsMinimum() ? 5.00 : 0.00;
+
+// Console.WriteLine($"Total: ${FormatDecimal(total)}");
+
+// double GetDiscountedPrice(int itemIndex)
+// {
+//     return items[itemIndex] * (1 - discounts[itemIndex]);
+// }
+
+// bool TotalMeetsMinimum()
+// {
+//     return total >= minimumSpend;
+// }
+
+// string FormatDecimal(double input)
+// {
+//     return input.ToString().Substring(0, 5);
+// }
+// -------------------------------------------------------------------------------------------
+// string input = "there are snakes at the zoo";
+
+// System.Console.WriteLine(input);
+// Console.WriteLine(ReverseSentence(input));
+
+// string ReverseSentence(string input) {
+//     string result = "";
+//     string[] words = input.Split(' ');
+//     foreach(string word in words) {
+//         result += ReserveWord(word) + " ";
+//     }
+//     return result.Trim();
+// }
+// string ReserveWord(string word) {
+//     string result = "";
+//     for(int i = word.Length - 1; i >= 0; i--) {
+//         result += word[i];
+//     }
+//     return result;
+// }
+// --------------------------------------------------------------------------------------------
+// ## Zoo
+
+// using System;
+
+// string[] pettingZoo = 
+// {
+//     "alpacas", "capybaras", "chickens", "ducks", "emus", "geese", 
+//     "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws", 
+//     "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
+// };
+
+// PlanSchoolVisit("School A");
+// PlanSchoolVisit("School B", 3);
+// PlanSchoolVisit("School C", 2);
+
+// void PlanSchoolVisit(string schoolName, int groups = 6) 
+// {
+//     RandomizeAnimals(); 
+//     string[,] group1 = AssignGroup(groups);
+//     Console.WriteLine(schoolName);
+//     PrintGroup(group1);
+// }
+
+// void RandomizeAnimals() 
+// {
+//     Random random = new Random();
+
+//     for (int i = 0; i < pettingZoo.Length; i++) 
+//     {
+//         int r = random.Next(i, pettingZoo.Length);
+
+//         string temp = pettingZoo[r];
+//         pettingZoo[r] = pettingZoo[i];
+//         pettingZoo[i] = temp;
+//     }
+// }
+
+// string[,] AssignGroup(int groups = 6) 
+// {
+//     string[,] result = new string[groups, pettingZoo.Length/groups];
+//     int start = 0;
+
+//     for (int i = 0; i < groups; i++) 
+//     {
+//         for (int j = 0; j < result.GetLength(1); j++) 
+//         {
+//             result[i,j] = pettingZoo[start++];
+//         }
+//     }
+
+//     return result;
+// }
+
+// void PrintGroup(string[,] groups) 
+// {
+//     for (int i = 0; i < groups.GetLength(0); i++) 
+//     {
+//         Console.Write($"Group {i + 1}: ");
+//         for (int j = 0; j < groups.GetLength(1); j++) 
+//         {
+//             Console.Write($"{groups[i,j]}  ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
