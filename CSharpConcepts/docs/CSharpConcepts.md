@@ -88,7 +88,22 @@ string result = $"Name: {name}, Age: {age}, Salary: {salary:C}"; // String inter
 
 - The PadLeft() method adds blank spaces to the left-hand side of the string so that the total number of characters equals the argument you send it.
 
+### Delegates
+```csharp
+// declaration
+public delegate void Testdel();
+// Instantation
+Testdel delObj = TestMethod;
+// Usage
+delObj();
+```
 - A delegate in C# is a type-safe function pointer that holds a reference to a method. Delegates allow methods to be passed as arguments, stored in variables, or dynamically assigned at runtime.
+    - the signature of the delegate should be same as the signature of the method
+    - in delagates we can instantiate multiple methods
+     ```csharp
+    (GreetDelegate greet= sayHello;
+    greet += sayGM;)
+    ```
     - Its a callback function and higher order functions
     - Delegates are not functions themselves; they are just pointers to functions. The actual logic resides in the methods assigned to the delegate.
     - Delegates can be used to take functions as arguments or return functions from other methods. This is what makes them higher-order functions in C#.
@@ -113,6 +128,14 @@ An event in C# is a way to enable communication between classes through the publ
 - Syntax: Use the event keyword to declare an event and += to subscribe to it.
 - Purpose: Provides loose coupling between the publisher and subscribers, allowing multiple - subscribers to respond to an event.
 - Example: A Button click event where multiple subscribers (like different UI elements) can react to the click without the button knowing who those subscribers are.
+- The EventHandler in C# is a predefined delegate used for handling events. It provides a standard pattern for creating event handlers. It's part of the System namespace and can be used to attach and handle events in your application.
+```csharp
+public delegate void EventHandler(object? sender, EventArgs e);
+// object? sender: The object that raised the event.
+// EventArgs e: Holds event-specific data. If no data is required, EventArgs.Empty is used.
+```
+
+
 
 Key Benefits:
 - Encapsulation: Only the publisher can trigger the event, ensuring proper handling.
